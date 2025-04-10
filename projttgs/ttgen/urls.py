@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path
 from . import views
+from .views import Pdf  # if Pdf is in the same folder
+
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -38,6 +40,8 @@ urlpatterns = [
     path('generate_timetable', views.generate, name='generate'),
 
     path('timetable_generation/', views.timetable, name='timetable'),
-    path('timetable_generation/render/pdf', views.Pdf, name='pdf'),
+    # path('timetable_generation/render/pdf', views.Pdf, name='pdf'),
+    path('timetable_generation/render/pdf', Pdf.as_view(), name='pdf')
+
 
 ]
